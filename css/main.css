@@ -1,0 +1,25 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: white;
+}
+
+section {
+    padding: 10px;
+}
+
+section:not(:last-of-type) {
+    border-bottom: 1px solid black;
+}
+
+button {
+    display: block;
+}
+
+textarea {
+    width: 100%;
+    margin: 10px 0;
+}
