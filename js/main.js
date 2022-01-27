@@ -2,9 +2,7 @@
     The browser support for DrPublish is the two most recent major versions of Firefox and Chrome.
     Feel free to use new and shiny features without having to support older browsers.
 */
-
-//import { PluginAPI } from 'https://broadcast.drpublish.aptoma.no/js/shared/PluginAPI/PluginAPI-5.0.js';
-import { PluginAPI } from 'https://drpublish.multipass/js/shared/PluginAPI/PluginAPI-5.0.js';
+import { PluginAPI } from 'https://broadcast.drpublish.aptoma.no/js/shared/PluginAPI/PluginAPI-5.0.js';
 
 /*
     The plugin needs a name in order to send and receive messages from DrPublish
