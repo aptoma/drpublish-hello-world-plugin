@@ -25,8 +25,8 @@ const config = await PluginAPI.getConfiguration();
 */
 
 class Example {
-    static async run(pluginApiFunction, clickEvent) {
-        const result = await pluginApiFunction();
+    static async run(pluginApiFunction, clickEvent, ...parameters) {
+        const result = await pluginApiFunction(...parameters);
 
         /*
             Finding the .target element that belongs to the button
@@ -50,6 +50,12 @@ class Example {
     static sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+
+    static formatDrLibQuery(clickEvent) {
+        const inputElement = clickEvent.target.closest('section')?.querySelector('.input');
+        
+        return `${inputElement.dataset.query}${inputElement.value}`;
+    }
 }
 
 // Adding onclick listeners to buttons in the DOM
@@ -69,6 +75,14 @@ class Actions {
 
     static getContent(clickEvent) {
         Example.run(PluginAPI.Article.getCurrentContent, clickEvent);
+    }
+
+    static searchDrlib(clickEvent) {
+        Example.run(PluginAPI.searchDrLib, clickEvent, Example.formatDrLibQuery(clickEvent));
+    }
+    
+    static searchDrlibTags(clickEvent) {
+        Example.run(PluginAPI.searchDrLib, clickEvent, Example.formatDrLibQuery(clickEvent));
     }
 };
 Array.from(globalThis.document.querySelectorAll('button')).forEach(button => {

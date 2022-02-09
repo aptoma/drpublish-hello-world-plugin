@@ -32,6 +32,20 @@
             <button data-action="getContent">Run</button>
             <textarea class="target"></textarea>
         </section>
+        <section>
+            <h1>PluginAPI.searchDrLib('/articles?body=')</h1>
+            <p>Search for articles in DrLib using simple text query</p>
+            <button data-action="searchDrlib">Run</button>
+            <input type="text" class="input" data-query="/articles?body="/>
+            <textarea class="target"></textarea>
+        </section>
+        <section>
+            <h1>PluginAPI.searchDrLib('/tags?name=')</h1>
+            <p>Search for articles in DrLib using simple text query</p>
+            <button data-action="searchDrlibTags">Run</button>
+            <input type="text" class="input" data-query="/tags?name="/>
+            <textarea class="target"></textarea>
+        </section>
         <script type="module" src="js/main.js"></script>
     </body>
 </html>
