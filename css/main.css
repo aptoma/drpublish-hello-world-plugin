@@ -5,21 +5,85 @@ html, body {
 
 html {
     background-color: white;
+    padding: 5px;
 }
 
-section {
-    padding: 10px;
+* {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
 }
 
-section:not(:last-of-type) {
-    border-bottom: 1px solid black;
+section.maximized {
+    display: none;
+    max-width: 640px;
+    margin: 20px auto;
+    text-align: right;
 }
 
-button {
-    display: block;
+section.maximized button {
+    margin-top: 15px;
 }
 
-textarea {
-    width: 100%;
-    margin: 10px 0;
+@media screen and (min-width: 600px) {
+    section.minimized {
+        display: none;
+    }
+
+    section.maximized {
+        display: block;
+    }
+}
+
+span.insert {
+    display: none;
+}
+
+section.maximized.insert span.insert {
+    display: initial;
+}
+
+section.maximized.insert span.update {
+    display: none;
+}
+
+iframe.wrapper {
+    border: 1px solid black;
+    padding: 2px;
+}
+
+#accordion .button-parent span {
+    display: none;
+}
+
+#accordion button:disabled {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+#accordion .button-parent button:disabled + span {
+    display: initial;
+}
+
+.button-parent {
+    margin: 0;
+}
+
+.accordion-button:focus {
+    border-color: gainsboro;
+}
+
+.accordion-button {
+    border-bottom: 1px solid gainsboro;
+}
+
+.accordion-button.collapsed {
+    border-bottom: none;
+}
+
+:focus:not(:focus-visible),
+.accordion-button:not(.collapsed) {
+    outline: 0;
+    box-shadow: none;
 }
