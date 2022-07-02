@@ -1,7 +1,79 @@
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Open Sans'), local('OpenSans'), url(open-sans-fonts/open-sans-normal.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(open-sans-fonts/open-sans-700.woff) format('woff');
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(open-sans-fonts/open-sans-700.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: normal;
+    src: local('Open Sans Italic'), local('OpenSans-Italic'), url(open-sans-fonts/open-sans-400italic.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: normal;
+    src: local('PT Serif'), local('PTSerif-Regular'), url(pt-serif-fonts/pt-serif-400.woff) format('woff');
+}
+@font-face {
+    font-family: 'PT Serif';
+    font-style: normal;
+    font-weight: bold;
+    src: local('PT Serif Bold'), local('PTSerif-Bold'), url(pt-serif-fonts/pt-serif-700.woff) format('woff');
+}
+@font-face {
+    font-family: 'PT Serif';
+    font-style: italic;
+    font-weight: 400;
+    src: local('PT Serif Italic'), local('PTSerif-Italic'), url(pt-serif-fonts/pt-serif-italic.woff) format('woff');
+}
+
+
 body {
-    font-family: sans-serif;
+    color: #EEE;
+    background-color: #333;
+    font-family: "Open Sans";
     padding: 0 20px;
-    background-color: #FFF;
+    font-size: 13px;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #444;
+}
+
+*::-webkit-scrollbar-track:hover {
+    background: #555;
+}
+*::-webkit-scrollbar-thumb {
+    border: none;
+    border-radius: 3px;
+    background-color: #111;
+    background: linear-gradient(90deg, rgba(40,40,40,1) 0%, rgba(50,50,50,1) 50%, rgba(40,40,40,1) 100%);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, rgba(20,20,20,1) 0%, rgba(30,30,30,1) 50%, rgba(20,20,20,1) 100%);
 }
 
 * {
@@ -9,14 +81,14 @@ body {
 }
 
 h1 {
-    font-size: 20px;
-    color: #444;
+    font-size: 16px;
+    color: #FFF;
 }
 
 h3 {
     margin: 10px 0 5px 0;
-    font-size: 16px;
-    color: #555;
+    font-size: 13px;
+    font-weight: normal;
 }
 
 hr {
@@ -26,7 +98,8 @@ hr {
 code {
     display: block;
     white-space: pre-wrap;
-    background-color: antiquewhite;
+    background-color: #504331;
+    color: #cbcb87;
     padding: 5px;
     font-size: 11px;
     margin: 5px 0;
@@ -36,4 +109,33 @@ textarea {
     width: 100%;
     height: 50px;
     margin: 10px 0;
+    background-color: #555;
+    color: #FFF;
+    border: solid #777 1px;
+    border-radius: 3px;
+}
+
+
+input, button {
+    background-color: #555;
+    color: #FFF;
+    border: solid #777 1px;
+    padding: 3px 6px;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #444;
+    padding: 6px 12px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #555;
+}
+
+
+hr {
+    border: none;
+    border-bottom: solid #777 1px;
 }
