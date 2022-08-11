@@ -1,6 +1,8 @@
 /**
  * global PluginAPI
  */
+
+
 PluginAPI.on('afterCustomMetadataLoad', function() {
     console.log('stef: after metadata load');
 });
@@ -16,7 +18,17 @@ function initPlugin() {
     PluginAPI.on('afterLoad', function() {
         console.log('stef: after article load');
     });
+    initPluginMenu();
+}
 
+function initPluginMenu() {
+    PluginAPI.Editor.initMenu(['editContext', 'deleteButton']);
+    PluginAPI.Editor.registerMenuAction({
+        label: 'foo action',
+        callback: function () {
+            alert('Hello World!');
+        }
+    });
 }
 
 function fetchJWT() {
@@ -96,6 +108,20 @@ function setCustomMeta() {
 }
 
 
+function insertPluginElement() {
+    const assetElement = {
+        embeddedTypeId: 6,
+        assetType: 'script',
+        externalId: '',
+        assetClass: 'dp-script-asset',
+        assetSource: PluginAPI.getPluginName(),
+        resourceUri: '',
+        previewUri: '',
+        options: {code: '<div>foobar</div>'}
+    };
+    const placeholderMarkup = `<div>Hello World Plugin Element</div>`;
+    PluginAPI.Editor.insertEmbeddedAsset(placeholderMarkup, assetElement, function () {});
+}
 
 // ----------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
