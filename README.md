@@ -1,8 +1,13 @@
 # drpublish-hello-world-plugin
 
+Prerequisites
+------------
+- A server where you can install the plugin, must available from your web browser. Can be on localhost.
+- [node.js](https://nodejs.org), [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) 
+
 Installation
 ------------
-- Install the plugin on a service available by your web browser
+- Install the plugin on a service mentioned above
 - Run `npm install` from the plugin directory
 - Register the plugin in DrPublish publication config, section `Plugins`
   - name: `helloworld`
