@@ -4,7 +4,7 @@
 
 
 PluginAPI.on('afterCustomMetadataLoad', function() {
-    console.log('stef: after metadata load');
+    console.log('after metadata load');
 });
 
 function initPlugin() {
@@ -16,7 +16,7 @@ function initPlugin() {
         // afterArticleSave();
     });
     PluginAPI.on('afterLoad', function() {
-        console.log('stef: after article load');
+        console.log('after article load');
     });
     initPluginMenu();
 }
@@ -33,7 +33,7 @@ function initPluginMenu() {
 
 function fetchJWT() {
     var jwt = PluginAPI.getJWT();
-    console.log('stef: plgn jwt foo', jwt);
+    console.log('plgn jwt foo', jwt);
     $('#jwt-result').val(jwt);
 }
 
@@ -77,15 +77,12 @@ function getTags() {
     });
 }
 
-
 // get article tags
 function getCategories() {
     PluginAPI.Article.getSelectedCategories(function (cats) {
         $('#getCategories-result').val(cats.length > 0 ? JSON.stringify(cats) : 'article has no categories');
     });
 }
-
-
 
 // get article metadata
 function getCustomMeta() {
@@ -94,19 +91,13 @@ function getCustomMeta() {
     });
 }
 
-
 // set article metadata
 function setCustomMeta() {
-    console.log('stef: set custom meta', $('#setCustomMeta-value-input').val());
+    console.log('set custom meta', $('#setCustomMeta-value-input').val());
     PluginAPI.Article.setCustomMeta($('#setCustomMeta-name-input').val(), $('#setCustomMeta-value-input').val(), function (data) {
         $('#setCustomMeta-result').val(JSON.stringify(data));
     });
-
-    // PluginAPI.Article.setCustomMeta('printProductsPageCategory', '["avis-1","avis-2","avis-3"]', function (data) {
-    //     console.log(data);
-    // });
 }
-
 
 function insertPluginElement() {
     const assetElement = {
@@ -114,7 +105,7 @@ function insertPluginElement() {
         assetType: 'script',
         externalId: '',
         assetClass: 'dp-script-asset',
-        assetSource: PluginAPI.getPluginName(),
+        assetSource: PluginAPI.getPluginName(), // reference to the current plugin
         resourceUri: '',
         previewUri: '',
         options: {code: '<div>foobar</div>'}

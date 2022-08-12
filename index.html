@@ -8,17 +8,39 @@
     <script type="application/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="application/javascript"
             src="node_modules/@aptoma/drpublish-plugin-api/dist/jquery.postmessage.js"></script>
-    <!--<script type="application/javascript" src="node_modules/@aptoma/drpublish-plugin-api/dist/bundle.js"></script>-->
     <script type="application/javascript" src="https://localhost/plugin-api/dist/bundle.js"></script>
     <script type="application/javascript" src="helloworld.js?foo=bar"></script>
 </head>
 <body>
+<h1>Plugin API demo</h1>
+<h3>Insert Plugin Element, add context menu item</h3>
+<button onclick="insertPluginElement()">Insert element</button>
+<code>// prepare and insert the element
+function insertPluginElement() {
+    const assetElement = {
+        embeddedTypeId: 6,
+        assetType: 'script',
+        externalId: '',
+        assetClass: 'dp-script-asset',
+        assetSource: PluginAPI.getPluginName(), // reference to the current plugin
+        resourceUri: '',
+        previewUri: '',
+        options: {code: '<div>foobar</div>'}
+    };
+    const placeholderMarkup = `<div>Hello World Plugin Element</div>`;
+    PluginAPI.Editor.insertEmbeddedAsset(placeholderMarkup, assetElement, function () {});
+}
 
-
-<h1>Demo plugin</h1>
-
-<h3>Insert Plugin Element</h3>
-<button onclick="insertPluginElement()">Insert new element</button>
+// init context menu and add item
+function initPluginMenu() {
+        PluginAPI.Editor.initMenu(['editContext', 'deleteButton']);
+        PluginAPI.Editor.registerMenuAction({
+        label: 'foo action',
+        callback: function () {
+        alert('Hello World!');
+    }
+    });
+}</code>
 
 <h3>JWT emitted by DrPublish</h3>
 <input id="jwt-result" />
@@ -26,8 +48,7 @@
 
 <h3>Fetch article id dynamically, each time a new article is loaded in the editor</h3>
 <input id="fetchArticleId-result" />
-<code>
-    function initPlugin() {
+<code>function initPlugin() {
     PluginAPI.setPluginName('helloworld');
     // fetch article id after the article has been loaded
     fetchArticleIdDynamically();
@@ -37,9 +58,7 @@
     console.log('stef:fetchedartid', id);
     $('#fetchArticleId-result').val(id);
     });
-    }
-
-</code>
+}</code>
 <hr/>
 
 <h3>Inject HTML text string at cursor position</h3>
@@ -58,8 +77,7 @@
 <h3>Get article id</h3>
 <button onclick="getId()">do it</button>
 <input id="getId-result" />
-<code>
-PluginAPI.Article.getId(function (id) {
+<code>PluginAPI.Article.getId(function (id) {
     $('#getId-result').val(id);
 });</code>
 <hr/>
@@ -68,8 +86,7 @@ PluginAPI.Article.getId(function (id) {
 <h3>Get tags</h3>
 <button onclick="getTags()">do it</button>
 <textarea id="getTags-result" ></textarea>
-<code>
-PluginAPI.Article.getTags(function (tags) {
+<code>PluginAPI.Article.getTags(function (tags) {
     $('#getTags-result').val(tags.length > 0 ? JSON.stringify(tags) : 'article has no tags');
 });</code>
 <hr/>
@@ -77,9 +94,8 @@ PluginAPI.Article.getTags(function (tags) {
 <h3>Get categories</h3>
 <button onclick="getCategories()">do it</button>
 <textarea id="getCategories-result" ></textarea>
-<code>
-PluginAPI.Article.getSelectedCategories(function (categories) {
-
+<code>PluginAPI.Article.getSelectedCategories(function (categories) {
+    $('#getCategories-result').val(cats.length > 0 ? JSON.stringify(cats) : 'article has no categories');
 });</code>
 <hr/>
 
@@ -87,8 +103,7 @@ PluginAPI.Article.getSelectedCategories(function (categories) {
 <input placeholder="property name*" id="getCustomMeta-input" /><button onclick="getCustomMeta()">do it</button>
 <textarea id="getCustomMeta-result" ></textarea>
 <div class="hint">* If no value is provided, all available custom metadata are fetched</div>
-<code>
-PluginAPI.Article.getTags(function (tags) {
+<code>PluginAPI.Article.getTags(function (tags) {
     $('#getTags-result').val(tags.length > 0 ? JSON.stringify(tags) : 'article has no tags');
 });</code>
 <hr/>
@@ -99,10 +114,9 @@ PluginAPI.Article.getTags(function (tags) {
 <button onclick="setCustomMeta()">do it</button>
 <textarea id="setCustomMeta-result" ></textarea>
 
-<code>
-    PluginAPI.Article.setCustomMeta($('#setCustomMeta-name-input').val(), $('#setCustomMeta-value-input').val(), function (data) {
+<code>PluginAPI.Article.setCustomMeta($('#setCustomMeta-name-input').val(), $('#setCustomMeta-value-input').val(), function (data) {
     $('#setCustomMeta-result').val(JSON.stringify(data));
-    });</code>
+});</code>
 <hr/>
 
 
