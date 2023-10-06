@@ -103,7 +103,6 @@ export class DrPublish {
         await PluginAPI.editorInitializeMenu('deleteButton');
         await PluginAPI.on('pluginWindowRestored', this.minimized.bind(this));
         await PluginAPI.on('editorFocus', this.editorFocus.bind(this));
-        await PluginAPI.request('on-api-event', {name: 'editorFocus'});
 
         GUI.init();
         await this.editorFocus();
