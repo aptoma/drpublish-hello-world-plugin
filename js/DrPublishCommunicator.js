@@ -96,7 +96,11 @@ class DrPublishCommunicator
         if (type === 'table') {
             return await PluginAPI.callExtendedApi(...this.tablesPluginAddress, {html: data});
         }
-        return await PluginAPI.Editor.insertString(`<p>${data}</p>`);
+        if (editorType === 'xml') {
+            data = `<p>${data}</p>`;
+        }
+
+        return await PluginAPI.Editor.insertString(data, true);
     }
 }
 
