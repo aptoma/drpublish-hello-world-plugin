@@ -1,25 +1,91 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
-html {
+body {
+    background-color: rgb(245, 245, 245);
+}
+
+h1 {
+    text-align: center;
+    padding-top: 4px;
+}
+
+body > button {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+}
+
+.flex {
+    display: flex;
+    flex-flow: column;
+}
+
+.input {
+    padding-top: 20px;
+    min-height: 250px;
+    white-space: pre-wrap;
+    border-color: white;
+    display: inline-block;
+}
+
+.form-floating {
+    flex-grow: 1;
+}
+
+div textarea.form-control {
+    min-height: 150px;
+}
+
+div.content {
+    flex-grow: 1;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
+}
+
+.nav {
+    padding: 0 10px;
+}
+
+.nav-link {
+    color: #495057;
+}
+
+pre[contenteditable] {
+    outline: 0px solid transparent;
+}
+
+.hidden {
+    display: none;
+}
+
+button span.spinner-border {
+    margin-right: 3px;
+    display: none;
+}
+
+body.analyzing button.execute span.spinner-border {
+    display: inline-block;
+}
+
+.tab-content {
     background-color: white;
-}
-
-section {
+    height: calc(100% - 90px);
     padding: 10px;
 }
 
-section:not(:last-of-type) {
-    border-bottom: 1px solid black;
+span.refresh-text {
+    padding: 0 1px;
+    border: 2px solid;
+    border-color: transparent;
 }
 
-button {
-    display: block;
-}
-
-textarea {
-    width: 100%;
-    margin: 10px 0;
+span.refresh-text:hover {
+    border-color: #0d6efd;
 }

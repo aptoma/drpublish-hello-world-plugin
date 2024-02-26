@@ -5,47 +5,77 @@
         <meta charset="utf-8"/>
         <meta http-equiv="cache-control" content="no-store"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- Make sure you use replace "broadcast" with your DrPublish account name in the path below -->
+        <script type="importmap">
+            {
+                "imports": {
+                    "PluginAPI": "https://broadcast.drpublish.aptoma.no/js/shared/PluginAPI/PluginAPI-5.0.js"
+                }
+            }
+        </script>
     </head>
     <body>
-        <section>
-            <h1>PluginAPI.Article.getId()</h1>
-            <p>Fetches the ID of the currently edited article</p>
-            <button data-action="getId">Run</button>
-            <textarea class="target"></textarea>
-        </section>
-        <section>
-            <h1>PluginAPI.Article.getTags()</h1>
-            <p>Gets the tags currently applied to the article</p>
-            <button data-action="getTags">Run</button>
-            <textarea class="target"></textarea>
-        </section>
-        <section>
-            <h1>PluginAPI.Editor.getEditorType()</h1>
-            <p>Gets the editor type selected in 3 seconds (which allows you to move focus after clicking the button)</p>
-            <button data-action="getEditorType">Run</button>
-            <textarea class="target"></textarea>
-        </section>
-        <section>
-            <h1>PluginAPI.Article.getCurrentContent()</h1>
-            <p>Gets the entire article text contents</p>
-            <button data-action="getContent">Run</button>
-            <textarea class="target"></textarea>
-        </section>
-        <section>
-            <h1>PluginAPI.searchDrLib('/articles?body=')</h1>
-            <p>Search for articles in DrLib using simple text query</p>
-            <button data-action="searchDrlib">Run</button>
-            <input type="text" class="input" data-query="/articles?body="/>
-            <textarea class="target"></textarea>
-        </section>
-        <section>
-            <h1>PluginAPI.searchDrLib('/tags?name=')</h1>
-            <p>Search for articles in DrLib using simple text query</p>
-            <button data-action="searchDrlibTags">Run</button>
-            <input type="text" class="input" data-query="/tags?name="/>
-            <textarea class="target"></textarea>
-        </section>
+        <h1>AI&trade;</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="input-tab" data-bs-toggle="tab" data-bs-target="#input" type="button" role="tab">Input <span class="read refresh-text rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+                  </svg></span></button>
+            </li>
+            <li class="nav-item hidden" role="presentation">
+                <button class="nav-link" id="titles-tab" data-bs-toggle="tab" data-bs-target="#titles" type="button" role="tab">Titles</button>
+            </li>
+            <li class="nav-item hidden" role="presentation">
+                <button class="nav-link" id="descriptions-tab" data-bs-toggle="tab" data-bs-target="#descriptions" type="button" role="tab">Descriptions</button>
+            </li>
+            <li class="nav-item hidden" role="presentation">
+                <button class="nav-link" id="tables-tab" data-bs-toggle="tab" data-bs-target="#tables" type="button" role="tab">Tables</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane show active" id="input" role="tabpanel">
+                <div class="flex">
+                    <button disabled class="execute btn btn-danger" type="button"><span class="spinner-border spinner-border-sm" role="status"></span>Analyze</button>
+                </div>
+                <pre contenteditable class="input"></pre>
+             </div>
+            <div class="tab-pane" id="titles" role="tabpanel"></div>
+            <div class="tab-pane" id="descriptions" role="tabpanel"></div>
+            <div class="tab-pane" id="tables" role="tabpanel"></div>
+        </div>
         <script type="module" src="js/main.js"></script>
+        <template class="title">
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <input placeholder="" type="text" class="form-control">
+                    <label>Suggested title</label>
+                </div>
+                <button class="btn btn-primary" type="button">Insert</button>
+            </div>
+        </template>
+        <template class="description">
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <textarea placeholder="" class="form-control"></textarea>
+                    <label>Suggested description</label>
+                </div>
+                <button class="btn btn-primary" type="button">Insert</button>
+            </div>
+        </template>
+        <template class="table">
+            <div class="input-group mb-3">
+                <div class="content"></div>
+                <button class="btn btn-primary" type="button">Insert</button>
+            </div>
+        </template>
+        <template class="spinner">
+            <div class="spinner">
+                <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
+            </div>
+        </template>
     </body>
 </html>
