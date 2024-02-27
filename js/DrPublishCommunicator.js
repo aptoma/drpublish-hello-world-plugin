@@ -43,7 +43,7 @@ class DrPublishCommunicator
             content.innerHTML = item[1];
             Array.from(content.querySelectorAll(':scope > div')).map(element => element.parentElement.removeChild(element));
             Array.from(content.querySelectorAll('p,div,h1,h2,h3,h4,h5,h6,BLOCKQUOTE')).forEach(blockElement => blockElement.appendChild(document.createTextNode('\n')));
-            const text = content.innerText.replace(/[\n]{2,}/, '\n').trim();
+            const text = content.innerText.replace(/\n\s+\n/, '\n').replace(/[\n]{2,}/, '\n').trim();
             if (text.length) {
                 carry += text + '\n';
             }
