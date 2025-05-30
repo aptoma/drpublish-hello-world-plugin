@@ -1,0 +1,6 @@
+{
+    "rootUrl": {
+        "type": "string",
+        "title": "Root URL to plugin backend"
+    }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DrPublish example plugin</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="cache-control" content="no-store"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="css/bootstrap-5.0.1.min.css"/>
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/bootstrap-5.0.1.bundle.min.js"></script>
+    </head>
+    <body>
+        <section class="minimized">
+            <div id="search" class="input-group mb-3">
+                <input data-name="query" id="search-input" type="text" class="form-control" placeholder="Video search term"/>
+                <button data-action="search" class="btn btn-outline-primary">Search</button>
+            </div>
+            <div id="accordion"></div>
+        </section>
+ 
+        <section class="maximized">
+            <div id="form">
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input data-name="title" class="form-control" type="text" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea data-name="description" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Embed code</label>
+                    <textarea data-name="embed" class="form-control" rows="3"></textarea>
+                </div>
+                <div id="preview"></div>
+                <button data-action="insert" class="btn btn-primary"><span class="update">Update</span><span class="insert">Insert</span></button>
+            </div>
+        </section>
+ 
+        <template class="accordion-item">
+            <div class="accordion-item">
+                <h4 class="accordion-header">
+                    <button class="title accordion-button collapsed"></button>
+                </h4>
+                <div class="accordion-collapse collapse">
+                    <div class="accordion-body">
+                        <p class="description"></p>
+                        <p class="button-parent">
+                            <button disabled class="edit btn btn-primary">Preview</button>
+                            <span>Click in an appropriate article field first</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <script type="module" src="js/main.js"></script>
+    </body>
+</html>
